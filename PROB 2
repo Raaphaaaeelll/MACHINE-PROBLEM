@@ -1,0 +1,91 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	// Declaring the variables needed
+	double sideA, sideB, sideC, SemiPer, Area, Perimeter;
+	double angleA, angleB, angleC, longest, Circumcenter, Apothem;
+	//	Declaring the variable "pi" to have a constant value
+	double pi = 3.141592654;
+	// Makes the user input values for the sides of the triangle
+	cout << "You are entering the world of triangle" << endl;
+	cout << "Enter value for side a: ";
+	cin >> sideC;
+	cout << "Enter value for side b: ";
+	cin >> sideA;
+	cout << "Enter value for side c: ";
+	cin >> sideB;
+	
+	// Forming Equations for angles A, B, and C
+	angleA = acos((pow(sideC , 2) - pow(sideA , 2) - pow(sideB , 2)) / -(2 * sideA * sideB)); 
+	angleB = acos((pow(sideA , 2) - pow(sideB , 2) - pow(sideC , 2)) / -(2 * sideB * sideC));
+	angleC = acos((pow(sideB , 2) - pow(sideA , 2) - pow(sideC , 2)) / -(2 * sideA * sideC));
+	// Outputting all the solved interior angles
+	cout << "Here are the solve interior angles of the triangle: " << endl;
+	cout << "The angle between side b and side c is: " << (angleA / pi) * 180 << " degrees" << setprecision(4) << endl;
+	cout << "The angle between side a and side c is: " << (angleB / pi) * 180 << " degrees" << setprecision(4) << endl;
+	cout << "The angle between side a and side b is: " << (angleC / pi) * 180 << " degrees" << setprecision(4) << endl;
+	
+	// Determining if the triangle is a scalene, isosceles, or equilateral
+	if(sideB != sideC && sideA != sideC)
+	{
+		cout << "It is a scalene triangle";
+	}
+	else if(sideA == sideC && sideA == sideB)
+	{
+		cout << "It is an equilateral triangle";
+	}
+	else
+	{
+		cout << "It is an isoceles triangle";
+	}
+	cout << endl;
+	
+	// Determining the perimeter
+	Perimeter = sideA + sideB + sideC; 
+	cout << "The perimeter is: " << Perimeter << endl; 
+	// Determing the area
+	SemiPer = (sideA + sideB + sideC) / 2;                               
+	Area = sqrt(SemiPer * (SemiPer - sideC) * (SemiPer - sideA) * (SemiPer - sideB));
+	cout << "The area is: " << Area << setprecision(4)<< endl;
+	// Determining the longest side and if the triangle is acute, right, or obtuse
+	longest = sideC;
+	if(longest < sideA)
+	{
+		sideC = longest;
+		longest = sideA;
+		sideA = sideC;
+	}
+	if(longest < sideB)
+	{
+		sideC = longest;
+		longest = sideB;
+		sideB = sideC;
+	}
+	
+	if(sideA * sideA + sideB * sideA > longest * longest)  
+	{
+		cout << "It is an acute triangle";
+	}
+	else if(sideA * sideA + sideB * sideA == longest * longest)
+	{
+		cout << "It is a right triangle";
+	}
+	else
+	{
+		cout << "It is an obtuse triangle";
+	}
+	cout << endl;
+	// Determing the apothem
+	Apothem = sideA / (2 * tan(180/3));
+	if(sideA == sideB && sideB == sideC)
+	cout << "The apothem is: " << Apothem << setprecision(2) << endl;
+	//Determining the circumcenter
+	Circumcenter = (sideA * sideB * sideC) / sqrt((sideA + sideB + sideC) * (-sideA + sideB + sideC) * (sideA - sideB + sideC) * (sideA + sideB - sideC));
+	cout << "The circumcenter is: " << Circumcenter << setprecision(2) << endl;
+	
+	return 0;
+}
