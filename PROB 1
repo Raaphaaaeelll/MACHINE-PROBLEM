@@ -14,24 +14,25 @@ int main()
 	
 	for(int i = 0; i < 50; i++) //Loop statement so that the user can input 50 students
 	{
+		
 		sumIndRep = 0, sumGrpRep = 0, sumQuiz = 0, sumPrelims = 0, sumFinals = 0;
 		cout << "Input Student Name: "; 
 		cin >> students[i];
-		for(int a = 0; a < 10; a++)
+		for(int a = 0; a < 10; a++) //For-program that outputs 10 different scores for Individial report 
 		{
 			cout << "Input score out of 100 for Individual Report " << a + 1 << " : ";
 			cin >> IndRep[a];
 			sumIndRep += IndRep[a];
 			aveIndRep = sumIndRep / 10;
 		}
-		for(int b = 0; b < 10; b++)
+		for(int b = 0; b < 10; b++) //For-program that outputs 10 different scores for Group Reports 
 		{
 			cout << "Input score out of 100 for Group Report " << b + 1 << " : ";
 			cin >> GrpRep[b];
 			sumGrpRep += GrpRep[b];
 			aveGrpRep = sumGrpRep / 10;
 		}
-		for(int c = 0; c < 2; c++)
+		for(int c = 0; c < 2; c++) //For-program that outputs 2 different scores for quizzes
 		{
 			cout << "Input score out of 100 for Quiz " << c + 1 << " : ";
 			cin >> Quiz[c];
@@ -95,7 +96,7 @@ int main()
 		{
 			cout << "GPA: " << fixed << setprecision(2) << 3.00;
 		}
-		else //Range of grade is less than 60
+		else // // Range of grade is less than 60
 		{
 			cout << "GPA: " << fixed << setprecision(2) << 5.00;
 		}
@@ -112,7 +113,7 @@ int main()
 	}
 	for(int i = 0; i < 50; i++) // Sorting for the top 10 students
 	{
-		for(int j = i + 1; j < 50; j++)
+		for(int j = i + 1; j < 50; j++) //For-loop that deteremines the over-all top 10 students
 		{
 			if(grade[i] < grade[j])
 			{
@@ -127,285 +128,7 @@ int main()
 		}
 	
 	}
-	cout << "Top 1 performing student: " << endl; // Outputting the top 10 students
-	for(int i = 0; i < 10; i++)
-	{
-		cout << students[i] << " "; 
-	}
-	
-	cout << "Congratulations!" << endl;
-	
-	return 0;
-}
-#include<iostream>
-#include<iomanip>
-#include<cmath>
-using namespace std;
-
-int main()
-{
-	//Declaring the variables
-	string students[50], name;
-	double grade[50], score;
-	double IndRep[10], GrpRep[10], Quiz[2], MajExam[2];
-	double IndRepTot, GrpRepTot, QuizTot, MajorExamTot, PWritten, FWritten, PPract, FPract;
-	double sumIndRep, sumGrpRep, sumQuiz, aveIndRep, aveGrpRep, aveQuiz, sumPrelims, sumFinals;
-	
-	for(int i = 0; i < 50; i++) //Loop statement so that the user can input 50 students
-	{
-		sumIndRep = 0, sumGrpRep = 0, sumQuiz = 0, sumPrelims = 0, sumFinals = 0;
-		cout << "Input Student Name: "; 
-		cin >> students[i];
-		for(int a = 0; a < 10; a++)
-		{
-			cout << "Input score out of 100 for Individual Report " << a + 1 << " : ";
-			cin >> IndRep[a];
-			sumIndRep += IndRep[a];
-			aveIndRep = sumIndRep / 10;
-		}
-		for(int b = 0; b < 10; b++)
-		{
-			cout << "Input score out of 100 for Group Report " << b + 1 << " : ";
-			cin >> GrpRep[b];
-			sumGrpRep += GrpRep[b];
-			aveGrpRep = sumGrpRep / 10;
-		}
-		for(int c = 0; c < 2; c++)
-		{
-			cout << "Input score out of 100 for Quiz " << c + 1 << " : ";
-			cin >> Quiz[c];
-			sumQuiz += Quiz[c];
-			aveQuiz = sumQuiz / 2;
-		}
-		cout << "Input score out of 70 for Written Prelim Exam: ";
-		cin >> PWritten;
-		cout << "Input score out of 30 for Practical Prelim Exam: ";
-		cin >> PPract;
-		sumPrelims = PWritten + PPract;
-		
-		cout << "Enter score out of 70 for Written Final Exam: ";
-		cin >> FWritten;
-		cout << "Enter score out of 30 for Practical Final Exam: ";
-		cin >> FPract;
-		sumFinals = FWritten + FPract;
-		
-		//Formulas used:
-		IndRepTot = ((aveIndRep * 100) / 100) * 0.15; 
-		GrpRepTot = ((aveGrpRep * 100) / 100) * 0.25;
-		QuizTot = ((aveQuiz * 100) / 100) * 0.20;
-		MajorExamTot = (((sumPrelims * 100) / 100) * 0.20) + (((sumFinals * 100) / 100) * 0.20);
-		grade[i] = IndRepTot + GrpRepTot + QuizTot + MajorExamTot;
-		
-		cout << "Raw grade: " << grade[i] << endl; //Outputting the raw grade of the student
-		
-		if(grade[i] <= 100 && grade[i] >= 95.57) // Range of grade: 95.57 - 100
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 1.00;
-		}
-		else if(grade[i] <= 95.56 && grade[i] >= 91.12) // Range of grade: 91.12 - 95.56
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 1.25;
-		}
-		else if(grade[i] <= 91.11 && grade[i] >= 86.68) // Range of grade: 86.68 - 91.11
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 1.50;
-		}
-		else if(grade[i] <= 86.67 && grade[i] >= 82.23) // Range of grade: 82.23 - 86.67
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 1.75;
-		}
-		else if(grade[i] <= 82.22 && grade[i] >= 77.79) // Range of grade: 77.79 - 82.22
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 2.00;
-		}
-		else if(grade[i] <= 77.78 && grade[i] >= 73.34) // Range of grade: 73.34 - 77.78
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 2.25;
-		}
-		else if(grade[i] <= 73.33 && grade[i] >= 68.90) // Range of grade: 68.90 - 73.33
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 2.50;
-		}
-		else if(grade[i] <= 68.89 && grade[i] >= 64.45) // Range of grade: 68.89 - 64.45
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 2.75;
-		}
-		else if(grade[i] <= 64.44 && grade[i] >= 60.00) // Range of grade: 60.00 - 64.44
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 3.00;
-		}
-		else //Range of grade is less than 60
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 5.00;
-		}
-		cout << endl;
-		
-		if(grade[i] > 60.00) // Outputting if the student passed or failed
-		{
-			cout << "The student PASSED the course" << endl;
-		}
-		else
-		{
-			cout << "The student FAILED the course" << endl;
-		}
-	}
-	for(int i = 0; i < 50; i++) // Sorting for the top 10 students
-	{
-		for(int j = i + 1; j < 50; j++)
-		{
-			if(grade[i] < grade[j])
-			{
-				score = grade[i];
-				grade[i] = grade[j];
-				grade[j] = score;
-				
-				name = students[i];
-				students[i] = students[j];
-				students[j] = name;
-			} 
-		}
-	
-	}
-	cout << "Top 1 performing student: " << endl; // Outputting the top 10 students
-	for(int i = 0; i < 10; i++)
-	{
-		cout << students[i] << " "; 
-	}
-	
-	cout << "Congratulations!" << endl;
-	
-	return 0;
-}
-#include<iostream>
-#include<iomanip>
-#include<cmath>
-using namespace std;
-
-int main()
-{
-	//Declaring the variables
-	string students[50], name;
-	double grade[50], score;
-	double IndRep[10], GrpRep[10], Quiz[2], MajExam[2];
-	double IndRepTot, GrpRepTot, QuizTot, MajorExamTot, PWritten, FWritten, PPract, FPract;
-	double sumIndRep, sumGrpRep, sumQuiz, aveIndRep, aveGrpRep, aveQuiz, sumPrelims, sumFinals;
-	
-	for(int i = 0; i < 50; i++) //Loop statement so that the user can input 50 students
-	{
-		sumIndRep = 0, sumGrpRep = 0, sumQuiz = 0, sumPrelims = 0, sumFinals = 0;
-		cout << "Input Student Name: "; 
-		cin >> students[i];
-		for(int a = 0; a < 10; a++)
-		{
-			cout << "Input score out of 100 for Individual Report " << a + 1 << " : ";
-			cin >> IndRep[a];
-			sumIndRep += IndRep[a];
-			aveIndRep = sumIndRep / 10;
-		}
-		for(int b = 0; b < 10; b++)
-		{
-			cout << "Input score out of 100 for Group Report " << b + 1 << " : ";
-			cin >> GrpRep[b];
-			sumGrpRep += GrpRep[b];
-			aveGrpRep = sumGrpRep / 10;
-		}
-		for(int c = 0; c < 2; c++)
-		{
-			cout << "Input score out of 100 for Quiz " << c + 1 << " : ";
-			cin >> Quiz[c];
-			sumQuiz += Quiz[c];
-			aveQuiz = sumQuiz / 2;
-		}
-		cout << "Input score out of 70 for Written Prelim Exam: ";
-		cin >> PWritten;
-		cout << "Input score out of 30 for Practical Prelim Exam: ";
-		cin >> PPract;
-		sumPrelims = PWritten + PPract;
-		
-		cout << "Enter score out of 70 for Written Final Exam: ";
-		cin >> FWritten;
-		cout << "Enter score out of 30 for Practical Final Exam: ";
-		cin >> FPract;
-		sumFinals = FWritten + FPract;
-		
-		//Formulas used:
-		IndRepTot = ((aveIndRep * 100) / 100) * 0.15; 
-		GrpRepTot = ((aveGrpRep * 100) / 100) * 0.25;
-		QuizTot = ((aveQuiz * 100) / 100) * 0.20;
-		MajorExamTot = (((sumPrelims * 100) / 100) * 0.20) + (((sumFinals * 100) / 100) * 0.20);
-		grade[i] = IndRepTot + GrpRepTot + QuizTot + MajorExamTot;
-		
-		cout << "Raw grade: " << grade[i] << endl; //Outputting the raw grade of the student
-		
-		if(grade[i] <= 100 && grade[i] >= 95.57) // Range of grade: 95.57 - 100
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 1.00;
-		}
-		else if(grade[i] <= 95.56 && grade[i] >= 91.12) // Range of grade: 91.12 - 95.56
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 1.25;
-		}
-		else if(grade[i] <= 91.11 && grade[i] >= 86.68) // Range of grade: 86.68 - 91.11
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 1.50;
-		}
-		else if(grade[i] <= 86.67 && grade[i] >= 82.23) // Range of grade: 82.23 - 86.67
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 1.75;
-		}
-		else if(grade[i] <= 82.22 && grade[i] >= 77.79) // Range of grade: 77.79 - 82.22
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 2.00;
-		}
-		else if(grade[i] <= 77.78 && grade[i] >= 73.34) // Range of grade: 73.34 - 77.78
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 2.25;
-		}
-		else if(grade[i] <= 73.33 && grade[i] >= 68.90) // Range of grade: 68.90 - 73.33
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 2.50;
-		}
-		else if(grade[i] <= 68.89 && grade[i] >= 64.45) // Range of grade: 68.89 - 64.45
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 2.75;
-		}
-		else if(grade[i] <= 64.44 && grade[i] >= 60.00) // Range of grade: 60.00 - 64.44
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 3.00;
-		}
-		else //Range of grade is less than 60
-		{
-			cout << "GPA: " << fixed << setprecision(2) << 5.00;
-		}
-		cout << endl;
-		
-		if(grade[i] > 60.00) // Outputting if the student passed or failed
-		{
-			cout << "The student PASSED the course" << endl;
-		}
-		else
-		{
-			cout << "The student FAILED the course" << endl;
-		}
-	}
-	for(int i = 0; i < 50; i++) // Sorting for the top 10 students
-	{
-		for(int j = i + 1; j < 50; j++)
-		{
-			if(grade[i] < grade[j])
-			{
-				score = grade[i];
-				grade[i] = grade[j];
-				grade[j] = score;
-				
-				name = students[i];
-				students[i] = students[j];
-				students[j] = name;
-			} 
-		}
-	
-	}
-	cout << "Top 1 performing student: " << endl; // Outputting the top 10 students
+	cout << "Top 10 performing student: " << endl; // Outputting the top 10 students
 	for(int i = 0; i < 10; i++)
 	{
 		cout << students[i] << " "; 
